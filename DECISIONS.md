@@ -9,12 +9,13 @@
 ## Trade-offs
 | Choice | Alternative | Why I picked this |
 |---|---|---|
-| Prophet | ARIMA / rolling mean | Handles weekly seasonality automatically, minimal tuning needed |
+| Rolling average forecast | Prophet | Prophet requires pystan which fails to compile on Linux Docker; rolling average is simpler, dependency-free, and more explainable to a non-technical Ops Head |
 | Streamlit | Jupyter only | Ops Head can interact with data herself, not just read static charts |
 | Plotly | Matplotlib | Interactive charts — evaluators can hover and explore |
 | City-level surge analysis | Restaurant-level | More actionable for ops policy decisions |
 
 ## What I de-scoped and why
+- Prophet/ARIMA forecasting — pystan compilation fails on Linux Docker; switched to rolling average
 - Weather/holiday augmentation — no public holiday API integrated; would improve forecast accuracy in production
 - Per-restaurant analysis — 800 restaurants too granular for a one-day ops brief
 - A/B test design for recommendations — time constraint; noted as next step
