@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from prophet import Prophet
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -38,21 +37,38 @@ def surge_analysis(df):
 
 def forecast_city(df, city='Delhi', periods=7):
     city_df = df[df['city'] == city].copy()
-    daily = city_df.groupby('date').size().reset_index(name='y')
+    daily = city_df.groupby('date').size().reset_index(name='orders')
     daily['ds'] = pd.to_datetime(daily['date'])
-    daily = daily[['ds', 'y']]
-
-    m = Prophet(
-        yearly_seasonality=False,
-        weekly_seasonality=True,
-        daily_seasonality=False,
-        changepoint_prior_scale=0.05
-    )
-    m.fit(daily)
-
-    future = m.make_future_dataframe(periods=periods)
-    forecast = m.predict(future)
-    return forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail(periods + 14)
+    daily = daily.sort_values('ds')
+    
+    # 7-day rolling average as baseline
+    daily['rolling'] = daily['orders'].rolling(7, min_periods=1).mean()
+    
+    # Simple trend: last 7 days avg
+    last_7 = daily['orders'].tail(7).mean()
+    last_14 = daily['orders'].tail(14).mean()
+    trend = (last_7 - last_14) / last_14 if last_14 > 0 else 0
+    
+    # Forecast next 7 days
+    last_date = daily['ds'].max()
+    future_dates = pd.date_range(start=last_date + pd.Timedelta(days=1), periods=periods)
+    future_orders = [last_7 * (1 + trend * i) for i in range(1, periods + 1)]
+    future_upper = [v * 1.15 for v in future_orders]
+    future_lower = [v * 0.85 for v in future_orders]
+    
+    forecast = pd.DataFrame({
+        'ds': future_dates,
+        'yhat': future_orders,
+        'yhat_upper': future_upper,
+        'yhat_lower': future_lower
+    })
+    
+    # Include last 14 days of actuals for context
+    historical = daily.tail(14)[['ds', 'orders']].rename(columns={'orders': 'yhat'})
+    historical['yhat_upper'] = historical['yhat']
+    historical['yhat_lower'] = historical['yhat']
+    
+    return pd.concat([historical, forecast], ignore_index=True)
 
 def peak_hours_per_city(df):
     grouped = df.groupby(['city', 'hour']).size().reset_index(name='orders')
