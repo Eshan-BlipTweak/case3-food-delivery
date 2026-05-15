@@ -127,10 +127,12 @@ Current surge is applied broadly. Data shows demand spikes sharply between **12�
 Restricting surge incentives to these 4 hours only could reduce over-payment by an estimated **~30%**
 while covering 70%+ of actual peak volume.
 
-**Recommendation 2 — City-specific surge thresholds**
-Delhi and Mumbai consistently show 2x the surge rate of Pune and Chennai.
-A flat national surge policy overpays in low-demand cities.
-Implementing city-level thresholds could save an estimated **₹8–12L/month** in unnecessary incentives.
+**Recommendation 2 — Move from a flat national surge rate to city-level dynamic thresholds**
+Current surge rate is applied uniformly at ~24% across all 7 cities regardless of actual demand differences.
+Cities like Delhi and Mumbai have significantly higher order volumes than Pune and Chennai, meaning
+the same flat surge rate is inefficient. Tying surge thresholds to real-time order volume per city
+could reduce unnecessary incentive spend while maintaining rider availability where it actually matters.
+Estimated saving: **₹6–10L/month** through smarter allocation.
 
 **Recommendation 3 — Weekend staffing reallocation**
 Saturday and Sunday show significantly higher order volumes but rider allocation follows weekday patterns.
