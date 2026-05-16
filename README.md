@@ -14,6 +14,9 @@ pinned: false
 **Repo:** https://github.com/Eshan-BlipTweak/case3-food-delivery
 **Demo video:** https://www.youtube.com/watch?v=MgYcq999ppk
 
+## Screenshot
+![App screenshot](screenshot.png)
+
 ## What this is
 An interactive demand analytics dashboard for a regional food delivery company across 7 Indian cities, built to help the Ops Head identify real peak demand windows and redesign rider incentive policy.
 
@@ -42,3 +45,6 @@ An interactive demand analytics dashboard for a regional food delivery company a
 - Prophet or LSTM model with holiday calendar for better forecast accuracy
 - Alerting when surge rate exceeds threshold
 - Role-based access so Ops Head vs CFO see different views
+
+## License
+MIT
