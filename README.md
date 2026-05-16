@@ -12,7 +12,7 @@ pinned: false
 
 **Live demo:** https://eshtiw-case3-food-delivery.hf.space
 **Repo:** https://github.com/Eshan-BlipTweak/case3-food-delivery
-**Demo video:** https://loom.com/share/XXXXX ← fill after recording
+**Demo video:** https://www.youtube.com/watch?v=MgYcq999ppk
 
 ## What this is
 An interactive demand analytics dashboard for a regional food delivery company across 7 Indian cities, built to help the Ops Head identify real peak demand windows and redesign rider incentive policy.

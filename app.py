@@ -134,10 +134,11 @@ the same flat surge rate is inefficient. Tying surge thresholds to real-time ord
 could reduce unnecessary incentive spend while maintaining rider availability where it actually matters.
 Estimated saving: **₹6–10L/month** through smarter allocation.
 
-**Recommendation 3 — Weekend staffing reallocation**
-Saturday and Sunday show significantly higher order volumes but rider allocation follows weekday patterns.
-Reallocating 15% of weekday rider slots to weekends could reduce average delivery time by an estimated
-**3–5 minutes** during weekend peaks, directly improving customer satisfaction scores.
+**Recommendation 3 — Investigate Tuesday demand dip**
+Data shows Tuesday consistently has lower order volume compared to other days.
+This could indicate a pricing or marketing opportunity — a targeted Tuesday promotion
+could smooth demand curves and improve rider utilization on a slow day.
+Estimated impact: 5–8% increase in Tuesday order volume with a modest discount incentive.
 """)
 
 st.caption("Data: Jan–Mar 2025 | 50,000 orders | 7 cities | 9 cuisines")
